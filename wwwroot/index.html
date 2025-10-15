@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game - Design Patterns Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ========================================
+         LOGIN SCREEN
+         ======================================== -->
+    <div id="login-screen" class="screen">
+        <div class="login-container">
+            <h1 class="game-title">2048</h1>
+            <p class="subtitle">Design Patterns Demo</p>
+            
+            <div class="login-form">
+                <h2>Đăng nhập</h2>
+                <input type="text" id="username" placeholder="Tên đăng nhập" autocomplete="username">
+                <input type="password" id="password" placeholder="Mật khẩu" autocomplete="current-password">
+                <button id="login-btn" class="btn btn-primary">Đăng nhập</button>
+                <div id="login-error" class="error-message"></div>
+                
+                <div class="demo-accounts">
+                    <p><strong>Demo Accounts:</strong></p>
+                    <p>👤 player1 / pass123</p>
+                    <p>👤 player2 / pass456</p>
+                </div>
+            </div>
+
+            <div class="design-patterns-info">
+                <h3>Design Patterns được áp dụng:</h3>
+                <div class="pattern-badge">🔹 Singleton Pattern</div>
+                <div class="pattern-badge">🔹 Decorator Pattern</div>
+                <div class="pattern-badge">🔹 Strategy Pattern</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         MODE SELECTION SCREEN
+         ======================================== -->
+    <div id="mode-selection-screen" class="screen hidden">
+        <div class="mode-container">
+            <div class="header">
+                <h1 class="game-title">2048</h1>
+                <div class="user-info">
+                    <span id="current-user">👤 Player</span>
+                    <button id="logout-btn" class="btn btn-small">Đăng xuất</button>
+                </div>
+            </div>
+
+            <h2 class="section-title">Chọn chế độ chơi</h2>
+            
+            <div class="mode-cards">
+                <!-- Easy Mode: 3x3 -->
+                <div class="mode-card" data-size="3">
+                    <div class="mode-icon">
+                        <div class="mini-grid grid-3x3">
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                        </div>
+                    </div>
+                    <h3>3×3 Grid - Easy</h3>
+                    <p class="mode-description">Quick game for beginners</p>
+                    <p class="mode-target">Target: 128</p>
+                    <p class="high-score">High Score: <span id="high-score-3">0</span></p>
+                </div>
+
+                <!-- Classic Mode: 4x4 -->
+                <div class="mode-card" data-size="4">
+                    <div class="mode-icon">
+                        <div class="mini-grid grid-4x4">
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                        </div>
+                    </div>
+                    <h3>4×4 Grid - Classic</h3>
+                    <p class="mode-description">Original 2048 experience</p>
+                    <p class="mode-target">Target: 2048</p>
+                    <p class="high-score">High Score: <span id="high-score-4">0</span></p>
+                </div>
+
+                <!-- Expert Mode: 5x5 -->
+                <div class="mode-card" data-size="5">
+                    <div class="mode-icon">
+                        <div class="mini-grid grid-5x5">
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                            <div class="mini-cell"></div>
+                        </div>
+                    </div>
+                    <h3>5×5 Grid - Expert</h3>
+                    <p class="mode-description">Maximum challenge</p>
+                    <p class="mode-target">Target: 4096</p>
+                    <p class="high-score">High Score: <span id="high-score-5">0</span></p>
+                </div>
+            </div>
+
+            <!-- Strategy Selection -->
+            <div class="strategy-selection">
+                <h3>⚡ Strategy Pattern - Chọn thuật toán di chuyển:</h3>
+                <div class="strategy-buttons">
+                    <button class="btn btn-strategy active" data-strategy="standard">
+                        🎯 Standard Mode
+                        <small>Merge thường, có tính điểm</small>
+                    </button>
+                    <button class="btn btn-strategy" data-strategy="fast">
+                        ⚡ Fast Mode
+                        <small>Merge nhiều lần, điểm cao hơn</small>
+                    </button>
+                    <button class="btn btn-strategy" data-strategy="test">
+                        🧪 Test Mode
+                        <small>Chỉ di chuyển, không tính điểm</small>
+                    </button>
+                </div>
+                <p class="strategy-info">
+                    <strong>Chiến lược hiện tại:</strong> <span id="current-strategy">Standard Mode</span><br>
+                    <span id="strategy-description">✅ Di chuyển và merge theo thuật toán chuẩn, có tính điểm</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         GAME SCREEN
+         ======================================== -->
+    <div id="game-screen" class="screen hidden">
+        <div class="game-container">
+            <!-- Game Header -->
+            <div class="game-header">
+                <div class="title-section">
+                    <h1 class="game-title">2048</h1>
+                    <p class="mode-info">Mode: <span id="current-mode">4x4</span></p>
+                </div>
+                
+                <div class="scores">
+                    <div class="score-box">
+                        <div class="score-label">Score</div>
+                        <div id="current-score" class="score-value">0</div>
+                    </div>
+                    <div class="score-box">
+                        <div class="score-label">Best</div>
+                        <div id="best-score" class="score-value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button id="new-game-btn" class="btn btn-primary">New Game</button>
+                <button id="change-mode-btn" class="btn btn-secondary">Change Mode</button>
+            </div>
+
+            <!-- Game Grid -->
+            <div id="grid-container" class="grid-container">
+                <!-- Grid will be generated dynamically -->
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>📖 Cách chơi & Mục tiêu</h3>
+                <p><strong>⌨️ Keyboard:</strong> Sử dụng phím mũi tên ← ↑ → ↓ để di chuyển</p>
+                <p><strong>📱 Touch:</strong> Vuốt lên/xuống/trái/phải để di chuyển</p>
+                <p><strong>🎯 Mục tiêu theo chế độ:</strong></p>
+                <ul>
+                    <li><strong>3×3 (Easy):</strong> Đạt ô <strong>128</strong></li>
+                    <li><strong>4×4 (Classic):</strong> Đạt ô <strong>2048</strong></li>
+                    <li><strong>5×5 (Expert):</strong> Đạt ô <strong>4096</strong></li>
+                </ul>
+                <p><strong>⚡ Các chế độ chơi:</strong></p>
+                <ul>
+                    <li><strong>Standard:</strong> Merge bình thường, tính điểm chuẩn</li>
+                    <li><strong>Fast:</strong> Merge nhiều lần, điểm cao hơn</li>
+                    <li><strong>Test:</strong> Chỉ di chuyển, không tính điểm (để thử nghiệm)</li>
+                </ul>
+            </div>
+
+            <!-- Design Pattern Info -->
+            <div class="pattern-info-game">
+                <h4>🎮 Singleton Pattern:</h4>
+                <p>Game state được quản lý bởi GameManagerSingleton (1 instance duy nhất)</p>
+                
+                <h4>🎨 Decorator Pattern:</h4>
+                <p>Cells được trang trí với special effects, animations, và notifications</p>
+                
+                <h4>⚡ Strategy Pattern:</h4>
+                <p><strong>Chiến lược:</strong> <span id="game-strategy">Standard Mode</span></p>
+                <div id="strategy-note" class="strategy-note"></div>
+            </div>
+        </div>
+
+        <!-- Game Over Overlay -->
+        <div id="game-over-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2>Game Over!</h2>
+                <p class="final-score">Score: <span id="final-score">0</span></p>
+                <button id="try-again-btn" class="btn btn-primary">Try Again</button>
+                <button id="back-to-modes-btn" class="btn btn-secondary">Change Mode</button>
+            </div>
+        </div>
+
+        <!-- You Win Overlay -->
+        <div id="win-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2>🏆 You Win! 🏆</h2>
+                <p class="final-score">Score: <span id="win-score">0</span></p>
+                <button id="continue-btn" class="btn btn-primary">Continue Playing</button>
+                <button id="new-game-win-btn" class="btn btn-secondary">New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

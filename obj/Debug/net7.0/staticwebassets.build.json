@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "Hash": "qiCsleMiWUUiF3mMcAa71nGlGpJuPA415ooMj45oBqI=",
+  "Source": "Game2048",
+  "BasePath": "_content/Game2048",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Game2048\\wwwroot",
+      "Source": "Game2048",
+      "ContentRoot": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\",
+      "BasePath": "_content/Game2048",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\css\\style.css",
+      "SourceId": "Game2048",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\",
+      "BasePath": "_content/Game2048",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\index.html",
+      "SourceId": "Game2048",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\",
+      "BasePath": "_content/Game2048",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\js\\app.js",
+      "SourceId": "Game2048",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Quang\\Desktop\\CNTT\\MTK\\wwwroot\\",
+      "BasePath": "_content/Game2048",
+      "RelativePath": "js/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\app.js"
+    }
+  ]
+}
