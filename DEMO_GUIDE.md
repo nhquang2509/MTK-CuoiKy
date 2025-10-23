@@ -2,7 +2,30 @@
 
 ## 🚀 Cách chạy ứng dụng
 
-### 1. Khởi động server
+### ⭐ CÁCH 1: TỰ ĐỘNG (KHUYẾN NGHỊ)
+
+#### Windows - Double Click:
+```
+1. Mở folder: C:\Users\Quang\Desktop\CNTT\MTK
+2. Double-click vào file: start.bat
+3. Đợi browser tự mở (khoảng 5 giây)
+4. Đăng nhập và chơi game!
+```
+
+#### Windows - PowerShell:
+```
+Click phải vào start.ps1 → "Run with PowerShell"
+```
+
+#### Linux/Mac:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### 📝 CÁCH 2: THỦ CÔNG
+
+#### 1. Khởi động server
 ```bash
 cd "c:\Users\Quang\Desktop\CNTT\MTK"
 dotnet run
@@ -10,7 +33,7 @@ dotnet run
 
 Server sẽ chạy tại: **http://localhost:5000**
 
-### 2. Mở trình duyệt
+#### 2. Mở trình duyệt
 Truy cập: `http://localhost:5000`
 
 ---
@@ -267,4 +290,27 @@ dotnet run --urls "http://localhost:5001"
 
 ---
 
+---
+
+## 🎁 Auto Startup Scripts
+
+Dự án đã bao gồm **3 file tự động chạy**:
+
+### 📄 start.bat (Windows CMD)
+- Double-click để chạy
+- Tự động build + khởi động server + mở browser
+
+### 📄 start.ps1 (PowerShell)
+- Click phải → "Run with PowerShell"
+- Hiển thị đẹp hơn với màu sắc
+
+### 📄 start.sh (Linux/Mac)
+- Bash script cho hệ điều hành Unix-based
+
+**Chi tiết**: Xem file `README.md` hoặc comments trong các scripts
+
+---
+
 **Chúc bạn demo thành công!** 🎉
+
+````

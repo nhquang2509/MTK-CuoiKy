@@ -10,7 +10,8 @@ namespace Game2048.Models
             { 4, 0 },
             { 5, 0 }
         };
-        public Dictionary<int, GameState> SavedGames { get; set; } = new Dictionary<int, GameState>();
+        // SavedGames removed - causes JSON serialization issues with int[,] arrays
+        // public Dictionary<int, GameState> SavedGames { get; set; } = new Dictionary<int, GameState>();
     }
 
     public class GameState

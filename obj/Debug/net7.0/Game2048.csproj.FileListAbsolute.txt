@@ -9,11 +9,6 @@ C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.AssemblyInfoInputs.cac
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.AssemblyInfo.cs
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.csproj.CoreCompileInputs.cache
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets\msbuild.Game2048.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets\msbuild.build.Game2048.props
-C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Game2048.props
-C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Game2048.props
-C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\scopedcss\bundle\Game2048.styles.css
@@ -22,3 +17,12 @@ C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\refint\Game2048.dll
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.pdb
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.genruntimeconfig.cache
 C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\ref\Game2048.dll
+C:\Users\Quang\Desktop\CNTT\MTK\bin\Debug\net7.0\Game2048.staticwebassets.endpoints.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\rpswa.dswa.cache.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\Game2048.sourcelink.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\rjimswa.dswa.cache.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\rjsmrazor.dswa.cache.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\rjsmcshtml.dswa.cache.json
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets.build.json.cache
+C:\Users\Quang\Desktop\CNTT\MTK\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+C:\Users\Quang\Desktop\CNTT\MTK\bin\Debug\net7.0\Data\users.json

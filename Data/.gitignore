@@ -1,0 +1,13 @@
+# Ignore user data file (nếu có thông tin nhạy cảm)
+# users.json
+
+# Nhưng giữ file mẫu
+!users.json
+
+# Ignore backup files
+*.backup.json
+*.bak
+
+# Ignore temporary files
+*.tmp
+~$*

@@ -1,8 +1,13 @@
+using Game2048.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Register UserDataService as Singleton (shared across all requests)
+builder.Services.AddSingleton<UserDataService>();
 
 // Add session support for storing user data
 builder.Services.AddDistributedMemoryCache();
@@ -25,5 +30,7 @@ app.MapControllers();
 
 // Default route to index.html
 app.MapFallbackToFile("index.html");
+
+Console.WriteLine("[INFO] User data will be stored in: Data/users.json");
 
 app.Run();

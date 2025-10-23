@@ -1,4 +1,5 @@
 using Game2048.Models;
+using Game2048.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Game2048.Controllers
@@ -7,19 +8,20 @@ namespace Game2048.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        // Simulated user database (in production, use real database)
-        private static Dictionary<string, User> _users = new Dictionary<string, User>
+        private readonly UserDataService _userDataService;
+
+        public AuthController(UserDataService userDataService)
         {
-            { "player1", new User { Username = "player1", Password = "pass123" } },
-            { "player2", new User { Username = "player2", Password = "pass456" } }
-        };
+            _userDataService = userDataService;
+        }
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
             Console.WriteLine($"[LOGIN] Attempting login for user: {request.Username}");
             
-            if (_users.TryGetValue(request.Username, out var user))
+            var user = _userDataService.GetUser(request.Username);
+            if (user != null)
             {
                 if (user.Password == request.Password)
                 {
@@ -60,7 +62,8 @@ namespace Game2048.Controllers
                 return Unauthorized(new { success = false });
             }
 
-            if (_users.TryGetValue(username, out var user))
+            var user = _userDataService.GetUser(username);
+            if (user != null)
             {
                 return Ok(new
                 {
@@ -82,23 +85,65 @@ namespace Game2048.Controllers
                 return Unauthorized();
             }
 
-            if (_users.TryGetValue(username, out var user))
+            var user = _userDataService.GetUser(username);
+            if (user != null)
             {
-                if (!user.HighScores.ContainsKey(request.GridSize))
-                {
-                    user.HighScores[request.GridSize] = 0;
-                }
+                // Cập nhật high score thông qua service
+                _userDataService.UpdateHighScore(username, request.GridSize, request.Score);
 
-                if (request.Score > user.HighScores[request.GridSize])
-                {
-                    user.HighScores[request.GridSize] = request.Score;
-                }
-
-                return Ok(new { success = true, highScores = user.HighScores });
+                // Lấy lại user data đã cập nhật
+                user = _userDataService.GetUser(username);
+                
+                return Ok(new { success = true, highScores = user?.HighScores });
             }
 
             return NotFound();
         }
+
+        [HttpGet("leaderboard")]
+        public IActionResult GetLeaderboard([FromQuery] int gridSize = 4, [FromQuery] int top = 10)
+        {
+            var leaderboard = _userDataService.GetLeaderboard(gridSize, top);
+            return Ok(new { success = true, leaderboard });
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterRequest request)
+        {
+            Console.WriteLine($"[REGISTER] Attempting to register user: {request.Username}");
+            
+            // Check if user already exists
+            var existingUser = _userDataService.GetUser(request.Username);
+            if (existingUser != null)
+            {
+                return BadRequest(new { success = false, message = "Username already exists" });
+            }
+
+            // Create new user
+            var newUser = new User
+            {
+                Username = request.Username,
+                Password = request.Password,
+                HighScores = new Dictionary<int, int>
+                {
+                    { 3, 0 },
+                    { 4, 0 },
+                    { 5, 0 }
+                }
+            };
+
+            _userDataService.SaveUser(newUser);
+            
+            Console.WriteLine($"[REGISTER] Successfully registered user: {request.Username}");
+            
+            return Ok(new { success = true, message = "Registration successful" });
+        }
+    }
+
+    public class RegisterRequest
+    {
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 
     public class SaveScoreRequest

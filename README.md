@@ -119,10 +119,30 @@ MTK/
 ## 🚀 Hướng dẫn chạy
 
 ### Yêu cầu
-- .NET 8.0 SDK hoặc mới hơn
+- .NET 7.0 SDK hoặc mới hơn
 - Web browser hiện đại (Chrome, Firefox, Edge)
 
-### Các bước chạy
+### ⭐ CÁCH 1: Tự động (Khuyến nghị)
+
+#### Windows - Double Click:
+```
+1. Double-click file: start.bat
+2. Đợi browser tự mở (5 giây)
+3. Đăng nhập và chơi!
+```
+
+#### Windows - PowerShell:
+```
+Click phải start.ps1 → "Run with PowerShell"
+```
+
+#### Linux/Mac:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### 📝 CÁCH 2: Thủ công
 
 1. **Mở terminal tại thư mục project**:
 ```bash
@@ -146,14 +166,31 @@ dotnet run
 
 5. **Mở trình duyệt** và truy cập:
 ```
-https://localhost:5001
-hoặc
 http://localhost:5000
 ```
 
-### Tài khoản demo
+### 👥 Tài khoản demo
 - **Player 1**: username: `player1`, password: `pass123`
 - **Player 2**: username: `player2`, password: `pass456`
+
+### 🐛 Troubleshooting
+
+#### Lỗi: ".NET SDK not found"
+**Fix:** Cài .NET SDK từ https://dotnet.microsoft.com/download
+
+#### Lỗi: Port 5000 đã được sử dụng
+**Fix:** 
+```bash
+# Windows
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+# Linux/Mac
+lsof -ti:5000 | xargs kill -9
+```
+
+#### Lỗi đăng nhập: "Sai tên đăng nhập hoặc mật khẩu"
+**Fix:** Xem file `FIX_LOGIN_ERROR.md` để biết chi tiết
 
 ## 🎯 Cách chơi
 
